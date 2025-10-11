@@ -1,0 +1,1022 @@
+<!DOCTYPE html><html lang="fr"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Mattous - Portfolio Data Engineer &amp; ML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header-content .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .header-content .tagline {
+            font-size: 1.1em;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        nav {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            padding: 60px 0;
+            background: var(--bg-white);
+            margin-bottom: 2px;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .experience-item, .project-item, .education-item {
+            background: var(--bg-white);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .experience-item:hover, .project-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-title {
+            font-size: 1.5em;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .item-company {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .item-location {
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        .item-date {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .item-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .item-description li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .item-description li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3::before {
+            content: '●';
+            font-size: 0.8em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .project-tech {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+  
+        .cert-item {
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .cert-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .interest-tag {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+        }
+
+        .interest-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2em;
+            }
+            
+            .header-content .subtitle {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .item-header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+    </style>
+<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Hamza MATTOUS</h1>
+            <p class="subtitle">Ingénieur en Données • Machine Learning • Data Engineering</p>
+            <p class="tagline">« Ingénierie des données au service de la valeur et de l'IA »</p>
+            <div class="contact-links">
+                <a href="mailto:h-mattous@hotmail.com">✉️ Email</a>
+                <a href="tel:+212771185761">📱 +212 771 185 761</a>
+                <a href="https://github.com/Mattous1234" target="_blank">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/hamza-mattous" target="_blank">💼 LinkedIn</a>
+                <a href="#" onclick="return false;">📍 Rabat, Maroc</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">À Propos</a></li>
+            <li><a href="#experience">Expériences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#education">Formation</a></li>
+
+            <li><a href="#interests">Centres d'intérêt</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>À Propos</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.15em; line-height: 1.8; color: var(--text-dark);">
+                <p style="margin-bottom: 20px;">
+                    Ingénieur Data passionné par la transformation de données brutes en insights actionnables et solutions intelligentes. 
+                    Mon expertise couvre l'ensemble de la chaîne de valeur des données : de l'ingestion et le traitement à grande échelle 
+                    jusqu'au déploiement de modèles de Machine Learning en production.
+                </p>
+                <p>
+                    Avec une expérience concrète en optimisation de bases de données, pipelines ETL, RAG et détection de fraude, 
+                    je cherche à rejoindre une équipe innovante où je pourrai contribuer à des projets data-driven à fort impact.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Années d'Études Ingénieur</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Projets Réalisés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Stages Professionnels</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Technologies Maîtrisées</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Expériences Professionnelles</h2>
+            
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Stagiaire Data Engineering &amp; Machine Learning</div>
+                        <div class="item-company">Administration des Douanes et Impôts Indirects (ADII)</div>
+                        <div class="item-location">Rabat, Maroc</div>
+                    </div>
+                    <div class="item-date">Juillet — Septembre 2025</div>
+                </div>
+                <div class="item-description">
+                    <ul>
+                        <li><strong>Pipeline ETL avancé :</strong> Conception d'un pipeline de transformation du Tarif Douanier en base de connaissances structurée utilisant Camelot pour l'extraction de données depuis PDF et Pandas pour le nettoyage et la transformation</li>
+                        <li><strong>Enrichissement multimodal :</strong> Intégration d'APIs externes (Ciqual pour les données nutritionnelles, PubChem pour les informations chimiques) et ajout automatique d'images descriptives pour chaque produit</li>
+                        <li><strong>Recherche vectorielle hybride :</strong> Indexation sur Qdrant Cloud avec implémentation d'une recherche combinant texte (SBERT) et images (OpenCLIP) pour une précision optimale</li>
+                        <li><strong>Détection de fraude :</strong> Développement de modèles supervisés (LightGBM, RandomForest, Régression Logistique) avec validation croisée et optimisation des hyperparamètres</li>
+                        <li><strong>Déploiement production :</strong> Mise en place d'une API Flask pour la prédiction en temps réel et d'un moteur RAG (Retrieval-Augmented Generation) pour la recherche intelligente dans le catalogue douanier</li>
+                        <li><strong>Impact :</strong> Réduction de 70% du temps de recherche d'information et amélioration de 85% de la détection précoce des anomalies</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Camelot</span>
+                    <span class="tech-badge">LightGBM</span>
+                    <span class="tech-badge">Qdrant</span>
+                    <span class="tech-badge">SBERT</span>
+                    <span class="tech-badge">OpenCLIP</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">RAG</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Stagiaire en Administration de Bases de Données</div>
+                        <div class="item-company">Barid Bank</div>
+                        <div class="item-location">Rabat, Maroc</div>
+                    </div>
+                    <div class="item-date">Juin — Août 2024</div>
+                </div>
+                <div class="item-description">
+                    <ul>
+                        <li><strong>Optimisation des performances :</strong> Analyse approfondie des rapports AWR (Automatic Workload Repository) Oracle pour identifier les goulots d'étranglement et optimiser les requêtes SQL critiques</li>
+                        <li><strong>Tuning SQL avancé :</strong> Réécriture de requêtes complexes, création d'index stratégiques et optimisation des plans d'exécution, réduisant le temps de réponse moyen de 45%</li>
+                        <li><strong>Automatisation :</strong> Mise en place de scripts de sauvegarde automatisés (RMAN) avec rotation et vérification d'intégrité, garantissant un RPO de moins de 1 heure</li>
+                        <li><strong>Supervision temps réel :</strong> Implémentation d'un système de monitoring avec alertes automatiques pour la détection proactive des anomalies (espace disque, sessions bloquantes, deadlocks)</li>
+                        <li><strong>Plan de maintenance :</strong> Élaboration d'un calendrier de maintenance optimisé incluant la réorganisation des tables/index, mise à jour des statistiques et purge des logs archivés</li>
+                        <li><strong>Impact :</strong> Amélioration de 60% de la fiabilité du système et réduction de 40% des incidents de performance</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Oracle Database</span>
+                    <span class="tech-badge">SQL</span>
+                    <span class="tech-badge">PL/SQL</span>
+                    <span class="tech-badge">AWR</span>
+                    <span class="tech-badge">RMAN</span>
+                    <span class="tech-badge">Performance Tuning</span>
+                    <span class="tech-badge">Monitoring</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projets Sélectionnés</h2>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Système RAG Douanier</div>
+                        <div class="item-company">ADII</div>
+                    </div>
+                    <div class="item-date">2025</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Solution complète de recherche augmentée et détection de fraude pour le Tarif Douanier
+                    </p>
+                    <ul>
+                        <li><strong>Architecture ETL sophistiquée :</strong> Extraction automatisée de tableaux complexes depuis PDF (Camelot), normalisation et structuration en base de connaissances relationnelle</li>
+                        <li><strong>Enrichissement intelligent :</strong> Récupération automatique de données nutritionnelles (API Ciqual), informations chimiques (PubChem) et images descriptives via web scraping</li>
+                        <li><strong>Recherche de nouvelle génération :</strong> Implémentation d'une recherche hybride combinant similarité sémantique textuelle (SBERT embeddings) et visuelle (OpenCLIP) sur Qdrant Cloud</li>
+                        <li><strong>ML pour la détection de fraude :</strong> Entraînement et comparaison de multiples modèles (LightGBM champion avec F1-score 0.89), pipeline scikit-learn complet avec preprocessing et validation</li>
+                        <li><strong>API de production :</strong> Service Flask RESTful pour interrogation RAG et prédiction de fraude, avec documentation Swagger et tests unitaires pytest</li>
+                        <li><strong>Résultats mesurables :</strong> 92% de précision dans la recherche, détection de 85% des anomalies, temps de réponse &lt; 200ms</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Camelot</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">LightGBM</span>
+                    <span class="tech-badge">scikit-learn</span>
+                    <span class="tech-badge">Qdrant</span>
+                    <span class="tech-badge">SBERT</span>
+                    <span class="tech-badge">OpenCLIP</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">LangChain</span>
+                    <span class="tech-badge">pytest</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">SportProfile AI</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                    </div>
+                    <div class="item-date">2024</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Plateforme de recommandations sportives personnalisées basée sur le clustering ML
+                    </p>
+                    <ul>
+                        <li><strong>Clustering non supervisé :</strong> Segmentation de profils utilisateurs avec K-Means, optimisation du nombre de clusters via méthode du coude et silhouette score</li>
+                        <li><strong>Feature engineering :</strong> Création de features composites (IMC, ratio cardio/force, niveau d'activité) et standardisation StandardScaler</li>
+                        <li><strong>Système de recommandation :</strong> Algorithme de matching basé sur la similarité cosine entre profils utilisateurs et programmes d'entraînement</li>
+                        <li><strong>Interface utilisateur :</strong> Application web Flask avec visualisations interactives (Plotly) des clusters et recommandations personnalisées</li>
+                        <li><strong>Performance :</strong> Silhouette score de 0.67 et taux de satisfaction utilisateur de 78% sur les recommandations</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">scikit-learn</span>
+                    <span class="tech-badge">K-Means</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">Plotly</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">EcoData Analytics</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                    </div>
+                    <div class="item-date">2024</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Plateforme d'analyse et monitoring de la qualité de l'air en temps réel
+                    </p>
+                    <ul>
+                        <li><strong>Collecte de données :</strong> Intégration de l'API OpenWeatherMap pour récupération temps réel de données AQI (Air Quality Index) multi-villes</li>
+                        <li><strong>Pipeline ETL :</strong> Stockage PostgreSQL avec historisation, agrégations temporelles (moyennes horaires/journalières) et détection de tendances</li>
+                        <li><strong>Dashboard interactif :</strong> Application Streamlit avec visualisations temps réel (graphiques temporels, cartes thermiques, indicateurs KPI)</li>
+                        <li><strong>Système d'alerte intelligent :</strong> Détection automatique de seuils critiques (PM2.5, NO2, O3) avec notifications et recommandations de santé publique</li>
+                        <li><strong>Analyse prédictive :</strong> Modèle ARIMA pour prévision de la qualité de l'air à 24h avec MAPE de 12%</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Streamlit</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">APIs REST</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Plotly</span>
+                    <span class="tech-badge">ARIMA</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Reconnaissance d'Oiseaux</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                    </div>
+                    <div class="item-date">2023 — 2024</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Système de classification d'images d'oiseaux par Deep Learning
+                    </p>
+                    <ul>
+                        <li><strong>Transfer Learning :</strong> Fine-tuning de ResNet50 pré-entraîné sur ImageNet, gel des couches initiales et entraînement des couches supérieures</li>
+                        <li><strong>Optimisation :</strong> Data augmentation (rotation, flip, zoom), learning rate scheduling, early stopping et régularisation (dropout 0.5)</li>
+                        <li><strong>Performance exceptionnelle :</strong> Précision de 92% sur 225 espèces d'oiseaux, matrice de confusion détaillée et analyse des erreurs</li>
+                        <li><strong>Déploiement :</strong> Application Flask avec upload d'image, prédiction temps réel et affichage des top-5 probabilités avec confiance</li>
+                        <li><strong>Dataset :</strong> 30 000+ images annotées avec validation train/val/test stratifiée 70/15/15</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">ResNet50</span>
+                    <span class="tech-badge">Transfer Learning</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">torchvision</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">PlantDoc - Diagnostic des Maladies Végétales</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                    </div>
+                    <div class="item-date">2023</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Outil d'aide au diagnostic des maladies des plantes par vision par ordinateur
+                    </p>
+                    <ul>
+                        <li><strong>CNN personnalisé :</strong> Architecture convolutionnelle multi-classes pour 38 catégories de maladies sur 14 espèces de plantes</li>
+                        <li><strong>Interface Gradio :</strong> Application web interactive avec upload d'image, visualisation des régions d'attention (Grad-CAM) et recommandations de traitement</li>
+                        <li><strong>Précision clinique :</strong> Accuracy de 96% avec analyse détaillée par classe (precision, recall, F1) et identification des faiblesses du modèle</li>
+                        <li><strong>Robustesse :</strong> Validation sur images de terrain (différentes conditions d'éclairage, angles, arrière-plans) avec 89% de précision</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">CNN</span>
+                    <span class="tech-badge">Gradio</span>
+                    <span class="tech-badge">Grad-CAM</span>
+                    <span class="tech-badge">Computer Vision</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Moteur de Recherche de Documents</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                    </div>
+                    <div class="item-date">2023</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500; color: var(--primary-dark);">
+                        Système de recherche full-text avec indexation Elasticsearch
+                    </p>
+                    <ul>
+                        <li><strong>Indexation avancée :</strong> Configuration d'analyseurs personnalisés (stemming français, stop words, synonymes) et mapping optimisé des champs</li>
+                        <li><strong>Recherche sophistiquée :</strong> Requêtes multi-champs avec boosting, fuzzy matching pour fautes de frappe, et filtres facetés</li>
+                        <li><strong>Application Java :</strong> Architecture MVC avec JavaFX pour l'interface graphique, gestion CRUD complète et visualisation des résultats</li>
+                        <li><strong>Performance :</strong> Indexation de 50 000+ documents, temps de recherche &lt; 100ms, ranking pertinent avec TF-IDF et BM25</li>
+                        <li><strong>Features avancées :</strong> Suggestions auto-complétion, highlighting des termes, export des résultats (PDF, CSV)</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-badge">Elasticsearch</span>
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">JavaFX</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">MVC</span>
+                    <span class="tech-badge">Full-Text Search</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Langages de Programmation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python (Expert)</span>
+                        <span class="skill-tag">SQL (Avancé)</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Scala</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">R</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Dask</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">Data Modeling</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Orchestration &amp; Workflow</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Apache Airflow</span>
+                        <span class="skill-tag">Prefect</span>
+                        <span class="skill-tag">dbt</span>
+                        <span class="skill-tag">APIs REST</span>
+                        <span class="skill-tag">Camelot/Tabula</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Bases de Données</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Oracle Database</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Data Warehousing</span>
+                        <span class="skill-tag">Query Optimization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Search &amp; Retrieval</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Elasticsearch</span>
+                        <span class="skill-tag">Qdrant</span>
+                        <span class="skill-tag">FAISS</span>
+                        <span class="skill-tag">Vector Search</span>
+                        <span class="skill-tag">Hybrid Search</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">LightGBM</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">RandomForest</span>
+                        <span class="skill-tag">Model Evaluation</span>
+                        <span class="skill-tag">Cross-Validation</span>
+                        <span class="skill-tag">Hyperparameter Tuning</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Deep Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Transfer Learning</span>
+                        <span class="skill-tag">ResNet</span>
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>LLM &amp; RAG</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LlamaIndex</span>
+                        <span class="skill-tag">SBERT</span>
+                        <span class="skill-tag">OpenCLIP</span>
+                        <span class="skill-tag">Embeddings</span>
+                        <span class="skill-tag">RAG Systems</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Déploiement &amp; DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">pytest</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>BI &amp; Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud &amp; Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Qdrant Cloud</span>
+                        <span class="skill-tag">Cloud Services</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Qualité &amp; Performance</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SQL Tuning</span>
+                        <span class="skill-tag">AWR Analysis</span>
+                        <span class="skill-tag">Code Quality</span>
+                        <span class="skill-tag">Documentation</span>
+                        <span class="skill-tag">Best Practices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Formation Académique</h2>
+            
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Cycle Ingénieur — Ingénierie de l'Information Numérique (IIN)</div>
+                        <div class="item-company">École des Sciences de l'Information (ESI)</div>
+                        <div class="item-location">Rabat, Maroc</div>
+                    </div>
+                    <div class="item-date">2023 — 2026</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 15px; font-weight: 500;">
+                        Majeure : Data Engineering, Machine Learning, Systèmes d'Information
+                    </p>
+                    <p style="margin-bottom: 10px; font-weight: 500; color: var(--primary-dark);">Modules clés :</p>
+                    <ul>
+                        <li><strong>Data Engineering :</strong> Big Data, Architectures distribuées, ETL/ELT, Data Warehousing, Cloud Computing</li>
+                        <li><strong>Machine Learning &amp; IA :</strong> Apprentissage supervisé/non supervisé, Deep Learning, NLP, Computer Vision, MLOps</li>
+                        <li><strong>Bases de Données :</strong> SGBD relationnels/NoSQL, Optimisation de requêtes, Administration, Sécurité</li>
+                        <li><strong>Développement :</strong> Génie Logiciel, Architecture logicielle, Design Patterns, Méthodologies Agile</li>
+                        <li><strong>Mathématiques &amp; Statistiques :</strong> Probabilités, Statistiques inférentielles, Optimisation, Algèbre linéaire</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Classes Préparatoires aux Grandes Écoles MPSI — MP</div>
+                        <div class="item-company">Lycée Ibn Al Ghazi</div>
+                        <div class="item-location">Maroc</div>
+                    </div>
+                    <div class="item-date">2021 — 2023</div>
+                </div>
+                <div class="item-description">
+                    <p style="margin-bottom: 10px;">
+                        Formation intensive en Mathématiques, Physique et Informatique. Développement de solides compétences analytiques, 
+                        rigueur scientifique et capacité de résolution de problèmes complexes.
+                    </p>
+                    <p style="font-weight: 500; color: var(--primary-dark);">
+                        Fondations théoriques en : Analyse mathématique, Algèbre, Mécanique, Électromagnétisme, Algorithmes, Programmation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+
+    <section id="interests">
+        <div class="container">
+            <h2>Centres d'Intérêt</h2>
+            <div class="interests">
+                <span class="interest-tag">📊 Analyse Prédictive</span>
+                <span class="interest-tag">🤖 Intelligence Artificielle</span>
+                <span class="interest-tag">📈 Data-Driven Decision Making</span>
+                <span class="interest-tag">🌍 Tech for Good</span>
+                <span class="interest-tag">🎵 Musique</span>
+                <span class="interest-tag">💡 Innovation Technologique</span>
+                <span class="interest-tag">📚 Veille Technologique</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.2em; margin-bottom: 15px;">
+                <strong>Hamza MATTOUS</strong> — Ingénieur Data &amp; Machine Learning
+            </p>
+            <p style="margin-bottom: 10px;">
+                📧 h-mattous@hotmail.com | 📱 +212 771 185 761 | 📍 Rabat, Maroc
+            </p>
+            <p>
+                <a href="https://github.com/Mattous1234" target="_blank" style="color: white; margin: 0 10px;">GitHub</a> |
+                <a href="https://www.linkedin.com/in/hamza-mattous" target="_blank" style="color: white; margin: 0 10px;">LinkedIn</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                © 2025 Hamza Mattous. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active nav highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.background = 'var(--primary)';
+                    link.style.color = 'white';
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
